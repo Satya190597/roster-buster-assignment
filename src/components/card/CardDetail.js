@@ -1,6 +1,6 @@
 import React from "react";
 import TaskDetail from "../TaskDetail/TaskDetail";
-import { generateKeyFromDateAndIndex,addTimes } from "../../lib/utility";
+import { generateKeyFromDateAndIndex, addTimes } from "../../lib/utility";
 //fa fa-plane fa-lg
 //{props.data.Time_Depart} - {props.data.Time_Arrive}
 const CardDetail = (props) => {
@@ -16,7 +16,7 @@ const CardDetail = (props) => {
             <b className="ms-3">{props.shortText}</b>
           </div>
           <div className="ms-auto p-2">
-            <b className="text-danger">
+            <b className="text-success">
               {props.timeStamp}
               &nbsp;
               <a
@@ -32,7 +32,6 @@ const CardDetail = (props) => {
               ></a>
             </b>
           </div>
-          {/* <i class="fa fa-info-circle"></i> */}
         </div>
         <div
           className="collapse"
@@ -100,24 +99,26 @@ const CardDetail = (props) => {
           cartIndex={props.cartIndex}
         />
       )}
-      {props.data.DutyID === "SBY" && <FlightDetail
+      {props.data.DutyID === "SBY" && (
+        <FlightDetail
           iconClass={"fa fa-suitcase fa-lg"}
           shortText={`Standby - SBY (${props.data.Departure})`}
           timeStamp={`${props.data.Time_Depart} - ${props.data.Time_Arrive}`}
           data={props.data}
           cartIndex={props.cartIndex}
-        />}
-      {props.data.DutyID === "OFD" && <FlightDetail
+        />
+      )}
+      {props.data.DutyID === "OFD" && (
+        <FlightDetail
           iconClass={"fa fa-suitcase fa-lg"}
           shortText={`Layover - (${props.data.Departure})`}
-          timeStamp={addTimes(props.data.Time_Depart,props.data.Time_Arrive)}
+          timeStamp={addTimes(props.data.Time_Depart, props.data.Time_Arrive)}
           data={props.data}
           cartIndex={props.cartIndex}
-        />}
+        />
+      )}
       {props.data.DutyID === "DO" && dayOff()}
-      {
-        
-      }
+      {}
     </>
   );
 };

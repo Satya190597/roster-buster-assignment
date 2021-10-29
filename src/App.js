@@ -1,52 +1,21 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Card from "./components/card/Card";
 import CardDetail from "./components/card/CardDetail";
 import Home from "./components/Home/Home";
-import {formatDateInWords} from "./lib/utility";
+
 import NavBar from "./components/Layout/NavBar/NavBar";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import "react-datepicker/dist/react-datepicker-cssmodules.css";
+import EventList from "./components/EventList/EventsList";
 
 function App() {
   const [dummyData, setDummyData] = useState({});
-  const [selectedDate, setSelectedDate] = useState(new Date());
   const [todayTask, setTodayTask] = useState({});
 
-  const HomeContainer = () => <Home todayTask={todayTask} />
-  const Events = function() {
-    return (
-      <div className="App">
-        <DatePicker
-          selected={selectedDate}
-          onChange={(date) => datePickerHandler(date)}
-        />
-        <button onClick={filterMyData} className="btn btn-primary">
-          Click
-        </button>
-        {Object.keys(dummyData).map((key) => {
-          const title = `Task For ${formatDateInWords(key)}`
-          return (          
-            <Card key={key} title={title}>
-              {dummyData[key].map((element, index) => {
-                return (
-                  <div key={index}>
-                    <CardDetail data={element} cartIndex={index}  />
-                  </div>
-                );
-              })}
-            </Card>
-          );
-        })}
-      </div>
-    )
-  }
+  const HomeContainer = () => <Home todayTask={todayTask} />;
+  
 
   async function getData() {
     const response = await fetch("http://localhost:3040/dummy-records");
@@ -84,47 +53,47 @@ function App() {
     ).slice(-2)}/${todayDate.getFullYear()}`;
 
     // Temp Work.
-    key = "07/07/2020"
+    key = "07/07/2020";
 
     if (dummyData.hasOwnProperty(key)) {
-      setTodayTask({[key]:dummyData[key]});
+      setTodayTask({ [key]: dummyData[key] });
     } else {
       setTodayTask({});
     }
   }
 
-  const filterMyData = () => {
-    const inputDate = new Date(selectedDate);
-    const key = `${("0" + inputDate.getDate()).slice(-2)}/${(
-      "0" +
-      (inputDate.getMonth() + 1)
-    ).slice(-2)}/${inputDate.getFullYear()}`;
-    console.log(key);
-    if (Object.keys(dummyData).length > 0) {
-      let filteredData = { [key]: dummyData[key] };
-      setDummyData(filteredData);
-    }
-  };
+  // const filterMyData = () => {
+  //   const inputDate = new Date(selectedDate);
+  //   const key = `${("0" + inputDate.getDate()).slice(-2)}/${(
+  //     "0" +
+  //     (inputDate.getMonth() + 1)
+  //   ).slice(-2)}/${inputDate.getFullYear()}`;
+  //   console.log(key);
+  //   if (Object.keys(dummyData).length > 0) {
+  //     let filteredData = { [key]: dummyData[key] };
+  //     setDummyData(filteredData);
+  //   }
+  // };
 
-  useEffect(() => {
-    filterMyData();
-  }, [selectedDate]);
+  // useEffect(() => {
+  //   filterMyData();
+  // }, [selectedDate]);
 
-  const datePickerHandler = (date) => {
-    setSelectedDate(date);
-  };
+  // const datePickerHandler = (date) => {
+  //   setSelectedDate(date);
+  // };
 
   return (
     <Router>
       <NavBar />
       <Switch>
-          <Route exact path="/">
-            <HomeContainer />
-          </Route>
-          <Route path="/events">
-            <Events />
-          </Route>
-        </Switch>
+        <Route exact path="/">
+          <HomeContainer />
+        </Route>
+        <Route path="/events">
+          {Object.keys(dummyData).length > 0 && <EventList data={dummyData}/>}
+        </Route>
+      </Switch>
     </Router>
   );
 }
