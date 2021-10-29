@@ -29,14 +29,12 @@ function App() {
         <button onClick={filterMyData} className="btn btn-primary">
           Click
         </button>
-        <TodayTask todayTask={todayTask} />
         {Object.keys(dummyData).map((key) => {
           return (
             <Card key={key} title={key}>
               {dummyData[key].map((element, index) => {
                 return (
                   <div key={index}>
-                    <p>{element.DutyCode}</p>
                     <CardDetail data={element} />
                   </div>
                 );

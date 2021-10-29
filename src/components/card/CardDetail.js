@@ -1,4 +1,5 @@
 import React from "react";
+import TaskDetail from "../TaskDetail/TaskDetail";
 
 const CardDetail = (props) => {
   const flightDetail = () => {
@@ -16,22 +17,20 @@ const CardDetail = (props) => {
               {props.data.Time_Depart} - {props.data.Time_Arrive}
             </b>
           </div>
+          {/* <i class="fa fa-info-circle"></i> */}
           <a
-            className="btn btn-primary"
+            className="fa fa-info-circle fa-lg"
             data-bs-toggle="collapse"
             href={`#details${props.data.Flightnr}`}
             role="button"
             aria-expanded="false"
             aria-controls="collapseExample"
           >
-            Show Details
           </a>
         </div>
         <div className="collapse" id={`details${props.data.Flightnr}`}>
           <div className="card card-body">
-            Some placeholder content for the collapse component. This panel is
-            hidden by default but revealed when the user activates the relevant
-            trigger.
+            <TaskDetail task={props.data}/>
           </div>
         </div>
       </>
