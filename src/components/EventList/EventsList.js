@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-import Card from "../card/Card";
-import CardDetail from "../card/CardDetail";
+import Card from "../Layout/Card/Card";
+import CardDetail from "../Layout/Card/CardDetail";
 import { formatDateInWords, formatDateAsKey } from "../../lib/utility";
 const EventList = function (props) {
   const [selectedDate, setSelectedDate] = useState("");
@@ -85,22 +85,6 @@ const EventList = function (props) {
       </div>
 
       {Object.keys(rosterBusterData).length <= 0 && <p>No Data Found</p>}
-      {/* {
-      Object.keys(rosterBusterData).map((key) => {
-        const title = `Task For ${formatDateInWords(key)}`;
-        return (
-          <Card key={key} title={title}>
-            {rosterBusterData[key].map((element, index) => {
-              return (
-                <div key={index}>
-                  <CardDetail data={element} cartIndex={index} />
-                </div>
-              );
-            })}
-          </Card>
-        );
-      })
-      } */}
       {setPaginatedData()}
       {
         <div className="card col-sm-6 mt-3 mb-3" style={{ margin: "auto" }}>
