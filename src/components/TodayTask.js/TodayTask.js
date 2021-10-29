@@ -20,7 +20,7 @@ const TodayTask = (props) => {
               {props.todayTask[key].map((element, index) => {
                 return (
                   <div key={index}>
-                    <CardDetail data={element} />
+                    <CardDetail data={element} cartIndex={index}/>
                   </div>
                 );
               })}

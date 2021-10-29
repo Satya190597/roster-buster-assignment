@@ -4,8 +4,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Card from "./components/card/Card";
 import CardDetail from "./components/card/CardDetail";
-import TodayTask from "./components/TodayTask.js/TodayTask";
 import Home from "./components/Home/Home";
+import {formatDateInWords} from "./lib/utility";
+import NavBar from "./components/Layout/NavBar/NavBar";
 import {
   BrowserRouter as Router,
   Switch,
@@ -30,12 +31,13 @@ function App() {
           Click
         </button>
         {Object.keys(dummyData).map((key) => {
-          return (
-            <Card key={key} title={key}>
+          const title = `Task For ${formatDateInWords(key)}`
+          return (          
+            <Card key={key} title={title}>
               {dummyData[key].map((element, index) => {
                 return (
                   <div key={index}>
-                    <CardDetail data={element} />
+                    <CardDetail data={element} cartIndex={index}  />
                   </div>
                 );
               })}
@@ -114,34 +116,9 @@ function App() {
 
   return (
     <Router>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand">Roster Buster</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarText"
-            aria-controls="navbarText"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-          <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <Link class="nav-link active" to="/home">Home</Link>
-              </li>
-              <li class="nav-item">              
-                <Link class="nav-link" to="/events">Events</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <NavBar />
       <Switch>
-          <Route path="/home">
+          <Route exact path="/">
             <HomeContainer />
           </Route>
           <Route path="/events">
