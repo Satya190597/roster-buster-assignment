@@ -4,12 +4,11 @@ import "react-datepicker/dist/react-datepicker.css";
 import Home from "./components/Home/Home";
 import NoTaskFound from "./components/NoTaskFound/NoTaskFound";
 import NavBar from "./components/Layout/NavBar/NavBar";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import EventList from "./components/EventList/EventsList";
 import { formatDateAsKey } from "./lib/utility";
 import { getRosterBusterData } from "./lib/api";
 function App() {
-
   // + State Declaration.
   const [dummyData, setDummyData] = useState({});
   const [todayTask, setTodayTask] = useState({});
@@ -35,6 +34,7 @@ function App() {
       setTodayTask({});
     }
   }
+
   return (
     <Router>
       <NavBar />

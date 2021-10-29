@@ -58,7 +58,7 @@ const EventList = function (props) {
     const pagination = [];
     for (let i = 0; i < totalLength / 3; i++) {
       pagination.push(
-        <li className="page-item" onClick={() => setStartIndex(i * 3)}>
+        <li key={i} className="page-item" onClick={() => setStartIndex(i * 3)}>
           <a className="page-link">{i}</a>
         </li>
       );
@@ -79,7 +79,7 @@ const EventList = function (props) {
             }}
           />
           <button className="btn btn-danger" onClick={clearSelectedDate}>
-            <i class="fa fa-times fa-lg"></i>
+            <i className="fa fa-times fa-lg"></i>
           </button>
         </div>
       </div>

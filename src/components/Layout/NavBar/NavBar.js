@@ -6,7 +6,9 @@ const NavBar = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand">Roster Buster <i class="fa fa-fighter-jet"></i></a>
+          <a className="navbar-brand">
+            Roster Buster <i className="fa fa-fighter-jet"></i>
+          </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -26,6 +28,7 @@ const NavBar = () => {
                   activeClassName="active"
                   exact
                   to="/"
+                  target="_blank"
                 >
                   Home
                 </NavLink>
@@ -35,6 +38,7 @@ const NavBar = () => {
                   className="nav-link"
                   activeClassName="active"
                   to="/events"
+                  target="_blank"
                 >
                   Events
                 </NavLink>
