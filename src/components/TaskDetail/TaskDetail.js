@@ -6,57 +6,57 @@ const TaskDetail = (props) => {
       <ul className="list-group list-group-flush">
         {props.task.Flightnr && (
           <li className="list-group-item d-flex justify-content-start align-items-center">
-            Flight Nr {props.task.Flightnr}
+            <b>Flight Nr :</b>&nbsp;{props.task.Flightnr}
           </li>
         )}
         {props.task.Date && (
           <li className="list-group-item d-flex justify-content-start align-items-center">
-            Date {formatDateInWords(props.task.Date)}
+            <b>Date :</b>&nbsp;{formatDateInWords(props.task.Date)}
           </li>
         )}
         {props.task["Aircraft Type"] && (
           <li className="list-group-item d-flex justify-content-start align-items-center">
-            Aircraft Type {props.task["Aircraft Type"]}
+            <b>Aircraft Type :</b>&nbsp;{props.task["Aircraft Type"]}
           </li>
         )}
         {props.task.Tail && (
           <li className="list-group-item d-flex justify-content-start align-items-center">
-            Tail {props.task.Tail}
+            <b>Tail :</b>&nbsp;{props.task.Tail}
           </li>
         )}
         {props.task.Departure && (
           <li className="list-group-item d-flex justify-content-start align-items-center">
-            Departure {props.task.Departure}
+            <b>Departure :</b>&nbsp;{props.task.Departure}
           </li>
         )}
         {props.task.Destination && (
           <li className="list-group-item d-flex justify-content-start align-items-center">
-            Destination {props.task.Destination}
+            <b>Destination :</b>&nbsp;{props.task.Destination}
           </li>
         )}
         {props.task.Time_Depart && (
           <li className="list-group-item d-flex justify-content-start align-items-center">
-            Time Depart {props.task.Time_Depart}
+            <b>Time Depart :</b>&nbsp;{props.task.Time_Depart}
           </li>
         )}
         {props.task.Time_Arrive && (
           <li className="list-group-item d-flex justify-content-start align-items-center">
-            Time Arrive {props.task.Time_Arrive}
+            <b>Time Arrive :</b>&nbsp;{props.task.Time_Arrive}
           </li>
         )}
         {props.task["Captain"] && (
           <li className="list-group-item d-flex justify-content-start align-items-center">
-            Captain {props.task["Captain"]}
+            <b>Captain :</b>&nbsp;{props.task["Captain"]}
           </li>
         )}
         {props.task["First Officer"] && (
           <li className="list-group-item d-flex justify-content-start align-items-center">
-            First Officer {props.task["First Officer"]}
+            <b>First Officer :</b>&nbsp;{props.task["First Officer"]}
           </li>
         )}
         {props.task["Flight Attendant"] && (
           <li className="list-group-item d-flex justify-content-start align-items-center">
-            Flight Attendant {props.task["Flight Attendant"]}
+            <b>Flight Attendant :</b>&nbsp;{props.task["Flight Attendant"]}
           </li>
         )}
       </ul>

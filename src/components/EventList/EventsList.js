@@ -3,17 +3,22 @@ import React, { useState, useEffect } from "react";
 import Card from "../Layout/Card/Card";
 import CardDetail from "../Layout/Card/CardDetail";
 import { formatDateInWords, formatDateAsKey } from "../../lib/utility";
+import NoTaskFound from "../NoTaskFound/NoTaskFound";
+
 const EventList = function (props) {
+  // + State declaration.
   const [selectedDate, setSelectedDate] = useState("");
   const [rosterBusterData, setRosterBusterData] = useState(props.data);
   const [startIndex, setStartIndex] = useState(0);
 
   let totalLength = Object.keys(rosterBusterData).length;
 
+  // + Side-effect.
   useEffect(() => {
     filterRosterBusterData();
   }, [selectedDate]);
 
+  // + Render paginated data -  and use Card component to display the info.
   function setPaginatedData() {
     const paginatedDataKey = Object.keys(rosterBusterData).slice(
       startIndex,
@@ -39,6 +44,7 @@ const EventList = function (props) {
     });
   }
 
+  // Filter RosterBusterData on the basis of user input date.
   const filterRosterBusterData = () => {
     const key = formatDateAsKey(selectedDate);
     if (!key) return;
@@ -49,11 +55,13 @@ const EventList = function (props) {
     }
   };
 
+  // Clear selected date & re-initialize the RosterBusterData with props.
   const clearSelectedDate = () => {
     setSelectedDate("");
     setRosterBusterData(props.data);
   };
 
+  // Render pagination list.
   const pagination = () => {
     const pagination = [];
     for (let i = 0; i < totalLength / 3; i++) {
@@ -84,15 +92,17 @@ const EventList = function (props) {
         </div>
       </div>
 
-      {Object.keys(rosterBusterData).length <= 0 && <p>No Data Found</p>}
+      {Object.keys(rosterBusterData).length <= 0 && (
+        <NoTaskFound>No Event Found On Current Date.</NoTaskFound>
+      )}
       {setPaginatedData()}
-      {
+      {Object.keys(rosterBusterData).length > 0 && (
         <div className="card col-sm-6 mt-3 mb-3" style={{ margin: "auto" }}>
           <ul className="pagination pt-2 pb-2" style={{ margin: "auto" }}>
             {pagination()}
           </ul>
         </div>
-      }
+      )}
     </>
   );
 };

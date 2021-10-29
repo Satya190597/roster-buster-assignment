@@ -28,7 +28,6 @@ const NavBar = () => {
                   activeClassName="active"
                   exact
                   to="/"
-                  target="_blank"
                 >
                   Home
                 </NavLink>
@@ -37,8 +36,7 @@ const NavBar = () => {
                 <NavLink
                   className="nav-link"
                   activeClassName="active"
-                  to="/events"
-                  target="_blank"
+                  to="/events"                  
                 >
                   Events
                 </NavLink>
