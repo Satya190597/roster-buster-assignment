@@ -5,7 +5,7 @@ const Home = (props) => {
   return (
     <>
       <TodayTask todayTask={props.todayTask} />
-      <div style={{ margin: "auto" }} className="col-sm-6">
+      <div className="col-sm-6 center-container">
         <p className="text-secondary">
           Note: As there were no task for current date on json response so I
           added a default date for development purpose.

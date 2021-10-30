@@ -77,7 +77,7 @@ const EventList = function (props) {
 
   return (
     <>
-      <div className="col-sm-6 pt-3" style={{ margin: "auto" }}>
+      <div className="col-sm-6 pt-3 center-container">
         <div className="input-group">
           <input
             type="date"
@@ -100,8 +100,8 @@ const EventList = function (props) {
       )}
       {setPaginatedData()}
       {Object.keys(rosterBusterData).length > 0 && (
-        <div className="card col-sm-6 mt-3 mb-3" style={{ margin: "auto" }}>
-          <ul className="pagination pt-2 pb-2" style={{ margin: "auto" }}>
+        <div className="card col-sm-6 mt-3 mb-3 center-container">
+          <ul className="pagination pt-2 pb-2 center-container">
             {pagination()}
           </ul>
         </div>

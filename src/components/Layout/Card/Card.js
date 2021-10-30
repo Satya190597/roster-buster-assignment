@@ -3,7 +3,7 @@ import React from 'react';
 const Card = (props) => {
     return (
         <>
-            <div className="col-sm-6 pt-3" style={{margin:'auto'}}>
+            <div className="col-sm-6 pt-3 center-container">
                 <div className="card">
                     <div className="card-body">
                         <h5 className="card-header bg-primary text-white">{props.title}</h5>

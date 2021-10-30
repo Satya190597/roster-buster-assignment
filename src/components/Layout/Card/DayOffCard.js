@@ -1,7 +1,9 @@
 const DayOff = () => {
   return (
     <>
-      <b>Day Off</b>
+      <san className="text-danger">
+        <b>Day Off</b>
+      </san>
     </>
   );
 };
