@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import Card from "../Layout/Card/Card";
 import CardDetail from "../Layout/Card/CardDetail";
 import { formatDateInWords, formatDateAsKey } from "../../lib/utility";
@@ -69,7 +68,7 @@ const EventList = function (props) {
     for (let i = 0; i < totalLength / 3; i++) {
       pagination.push(
         <li key={i} className="page-item" onClick={() => setStartIndex(i * 3)}>
-          <a className="page-link">{i+1}</a>
+          <a className="page-link">{i + 1}</a>
         </li>
       );
     }
@@ -79,7 +78,7 @@ const EventList = function (props) {
   return (
     <>
       <div className="col-sm-6 pt-3" style={{ margin: "auto" }}>
-        <div className="d-flex">
+        <div className="input-group">
           <input
             type="date"
             className="form-control"
@@ -95,7 +94,9 @@ const EventList = function (props) {
       </div>
 
       {Object.keys(rosterBusterData).length <= 0 && (
-        <NoTaskFound textClass="text-danger">No Events Found On Current Date.</NoTaskFound>
+        <NoTaskFound textClass="text-danger">
+          No Events Found On Current Date.
+        </NoTaskFound>
       )}
       {setPaginatedData()}
       {Object.keys(rosterBusterData).length > 0 && (

@@ -13,4 +13,9 @@ month[9] = "October";
 month[10] = "November";
 month[11] = "December";
 
-export { month };
+var DUTY_CODE_FLT = "FLT"
+var DUTY_CODE_SBY = "SBY"
+var DUTY_CODE_OFD = "OFD"
+var DUTY_CODE_DO = "DO"
+
+export { month,DUTY_CODE_FLT,DUTY_CODE_SBY,DUTY_CODE_OFD,DUTY_CODE_DO };
