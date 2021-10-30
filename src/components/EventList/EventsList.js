@@ -50,8 +50,10 @@ const EventList = function (props) {
     if (!key) return;
     if (key in props.data) {
       setRosterBusterData({ [key]: props.data[key] });
+      setStartIndex(0);
     } else {
       setRosterBusterData({});
+      setStartIndex(0);
     }
   };
 
@@ -67,7 +69,7 @@ const EventList = function (props) {
     for (let i = 0; i < totalLength / 3; i++) {
       pagination.push(
         <li key={i} className="page-item" onClick={() => setStartIndex(i * 3)}>
-          <a className="page-link">{i}</a>
+          <a className="page-link">{i+1}</a>
         </li>
       );
     }
@@ -93,7 +95,7 @@ const EventList = function (props) {
       </div>
 
       {Object.keys(rosterBusterData).length <= 0 && (
-        <NoTaskFound>No Event Found On Current Date.</NoTaskFound>
+        <NoTaskFound textClass="text-danger">No Events Found On Current Date.</NoTaskFound>
       )}
       {setPaginatedData()}
       {Object.keys(rosterBusterData).length > 0 && (
